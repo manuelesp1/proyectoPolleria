@@ -37,7 +37,13 @@ require_once(__DIR__."/../models/usuario_model.php");
             $list = $data->verificar_usuario($correo, $clave);
             $_SESSION['usuario'] = $list;
 
-            header("location: ./../index.php");
+            if($_SESSION['usuario']['id_rol'] == '1'){
+                header("location: ./../views/cliente_index.php");
+            } else {
+                // header("location: ./../index.php");
+                header("location: ./../views/cliente_index.php");
+            }
+            
         }
     }
 
