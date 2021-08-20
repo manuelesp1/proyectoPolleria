@@ -115,6 +115,18 @@
             <?php
                 endforeach;
             ?>
+            <div class="four columns">
+                <div class="card">
+                    <img src="img/platillo1.jpg" class="imagen-platillo u-full-width">
+                    <div class="info-card">
+                        <h4>1 Pollo + Papas + Ensalada + Cremas</h4>
+                        <p>+ 1/4 de Pollo Solo</p>
+                        <img src="img/estrellas.png">
+                        <p class="precio">$80.00 <span class="u-pull-right">$50.00</span> </p>
+                        
+                    </div>
+                </div>
+            </div>
 
             <!-- <div class="four columns">
                 <div class="card">
