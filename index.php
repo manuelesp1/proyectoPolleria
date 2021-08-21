@@ -14,44 +14,31 @@
     <link rel="stylesheet" href="views/css/normalize.css">
     <link rel="stylesheet" href="views/css/skeleton.css">
     <link rel="stylesheet" href="views/css/style.css">
+    <script type="text/javascript" src="views/js/carrito.js"></script>
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                
-                <div class="four columns">
-                    <h1>Carbon Chicken</h1>
-                    <h1>
-                        <?php
-                            if(isset($_SESSION['usuario'])){
-                                echo strtolower($_SESSION['usuario']['nombre']);
-                            }
-                            else{
-                                echo "no hay sesion";
-                            }
-                        ?>
-                    </h1>
-                </div>
-                <div class="two columns u-pull-right">
-                    <ul>
-                        <li class="submenu">
-                            <img src="img/logo.png" alt="" width="80px">
-                            <div id="carrito">
-                                <!--    <a href="#" class="button u-full-width">Nosotros</a>
-                                        <a href="#" class="button u-full-width">Comprar</a>
-                                        <a href="#" class="button u-full-width">Ubícanos</a>-->
-                                <a href="index.php" class="button u-full-width">Trabajadores</a>
-                                <a href="loginCliente.php" class="button u-full-width">Clientes</a>
-
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <header class="banner">
+		<nav class="menu">
+			<ul class="menu-ul">
+                <li><img src="views/img/logo.png" alt="" width="80px"></li>
+				<li><a href="#">Nosotros</a></li>
+				<li><a href="#">Contactos</a></li>
+				<?php 
+					if(isset($_SESSION['nomb_usuario'])){
+				?>
+					<li><a href="login/logout.php">Bienvenido, <?php echo $_SESSION['nomb_usuario']; ?></a></li>
+				<?php				
+					}
+					else{
+				 ?>
+				 	<li><a href="views/login.php">Login</a></li>
+				 <?php 
+				 	}
+				  ?>
+			</ul>
+		</nav>
+	</header>
 
     <div class="hero">
         <div class="container"> 
@@ -60,10 +47,10 @@
                     <div class="contenido-hero">
                         <h2>Acompañándote<br />en tu mesa</h2>
                         <p>CON EL MEJOR POLLO</p>
-                        <form>
+                        <!-- <form>
                             <input class="u-full-width" type="text" placeholder="¿Que te gustaria probar?" id="buscador">
                             <input type="submit" class="submit-buscador">
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
@@ -107,6 +94,14 @@
                             <p><?php echo $data['descripcion']; ?></p>
                             <img src="views/img/estrellas.png">
                             <p class="precio"><?php echo $data['precio']; ?> <span class="u-pull-right"><?php echo $data['precio']; ?></span></p>
+                            <div class="boton-compra">
+                                <input type="button" onclick="decrementa()" value="-" name="decremento">
+                                <p class="cantidad" name="cantidad" id="cantidad">1</p>
+                                <input type="button" onclick="incrementa()" value="+" name="incremento">
+                            </div>
+                            <form action="" class="envio-carrito">
+                                <input type="submit" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">
+                            </form>
                         </div>
 
                     </div>
@@ -115,100 +110,12 @@
             <?php
                 endforeach;
             ?>
-            <div class="four columns">
-                <div class="card">
-                    <img src="img/platillo1.jpg" class="imagen-platillo u-full-width">
-                    <div class="info-card">
-                        <h4>1 Pollo + Papas + Ensalada + Cremas</h4>
-                        <p>+ 1/4 de Pollo Solo</p>
-                        <img src="img/estrellas.png">
-                        <p class="precio">$80.00 <span class="u-pull-right">$50.00</span> </p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- <div class="four columns">
-                <div class="card">
-                    <img src="img/platillo1.jpg" class="imagen-platillo u-full-width">
-                    <div class="info-card">
-                        <h4>1 Pollo + Papas + Ensalada + Cremas</h4>
-                        <p>+ 1/4 de Pollo Solo</p>
-                        <img src="img/estrellas.png">
-                        <p class="precio">$80.00 <span class="u-pull-right">$50.00</span> </p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="four columns">
-                <div class="card">
-                    <img src="img/platillo2.jpg" class="imagen-platillo u-full-width">
-                    <div class="info-card">
-                        <h4>1/4 de Pollo + Papas + Ensalada</h4>
-                        <p>+ Inka Kola de 1/2 L</p>
-                        <img src="img/estrellas.png">
-                        <p class="precio">$25.00 <span class="u-pull-right">$18.00</span> </p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="four columns">
-                <div class="card">
-                    <img src="img/platillo3.jpg" class="imagen-platillo u-full-width">
-                    <div class="info-card">
-                        <h4>1 Pollo + Papas + Ensalada + Cremas</h4>
-                        <p>+1 Pollo Solo</p>
-                        <img src="img/estrellas.png">
-                        <p class="precio">$80.00 <span class="u-pull-right">$60.00</span> </p>
-
-                    </div>
-                </div>
-            </div>
         </div>
-
-        <div class="row">
-            <div class="four columns">
-                <div class="card">
-                    <img src="img/platillo4.jpg" class="imagen-platillo u-full-width">
-                    <div class="info-card">
-                        <h4>1 Pollo + Papas + Ensalada</h4>
-                        <p>+ Inka Kola de 1 1/2 L</p>
-                        <img src="img/estrellas.png">
-                        <p class="precio">$70.00 <span class="u-pull-right">$48.00</span> </p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="four columns">
-                <div class="card">
-                    <img src="img/platillo5.jpg" class="imagen-platillo u-full-width">
-                    <div class="info-card">
-                        <h4>1 Pollo + Papas + Ensalada</h4>
-                        <p>Incluido Delivery</p>
-                        <img src="img/estrellas.png">
-                        <p class="precio">$60.00 <span class="u-pull-right">$43.00</span> </p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="four columns">
-                <div class="card">
-                    <img src="img/platillo6.jpg" class="imagen-platillo u-full-width">
-                    <div class="info-card">
-                        <h4>Tallarín Criollo</h4>
-                        <p>+ Vaso de Chicha</p>
-                        <img src="img/estrellas.png">
-                        <p class="precio">$25.00 <span class="u-pull-right">$15.00</span> </p>
-
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 
-    <a href="loginCliente.php" class="u-full-width button-primary button input agregar-carrito">Comprar</a>
+    <!-- <a href="loginCliente.php" class="u-full-width button-primary button input agregar-carrito">Comprar</a> -->
 
-    <footer class="footer"> 
+    <!-- <footer class="footer"> 
         <div class="container">
             <div class="row">
                 <div class="four columns">
@@ -225,7 +132,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     
 </body>

@@ -150,6 +150,15 @@ ul {
 .info-card {
     padding: 10px 20px;
     color: white;
+    min-height: 50px; /*agregado*/
+}
+.info-card h4{ /*agregado*/
+    min-height: 50px;
+}
+.imagen-platillo{
+    min-height: 300px;
+    max-height: 300px;
+    object-fit: cover;
 }
 .info-card p,
 .card h4 {
@@ -175,6 +184,76 @@ ul {
     display: block;
     margin-bottom: 10px;
     text-decoration: none;
+}
+
+
+
+
+
+.banner {
+    width: 100%;
+    position: relative;
+    height: 100px;
+    padding: 0;
+}
+.menu {
+    color: white;
+    padding: 10px 0;
+    z-index: 1000;
+    /* position: fixed; */
+    width: 100%;
+}
+.menu::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: black;
+	z-index: -500;
+	opacity: 0.7;
+}
+.menu ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu li {
+    text-decoration: none;
+    display: inline-block;
+    margin: auto;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.menu a:hover {
+    color: black;
+    background-color: white;
+}
+.boton-compra{
+    display: flex;
+    justify-content: center;
+}
+.boton-compra input{
+    margin: 0;
+    padding: 0;
+    height: 38px;
+    width: 38px;
+    font-size: 20px;
+    top: 0;
+}
+.cantidad{
+    padding: 0px 10px;
+    margin-top: auto;
+}
+.envio-carrito{
+    margin: 0px;
 }
 
 
