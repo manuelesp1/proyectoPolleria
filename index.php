@@ -2,7 +2,6 @@
     session_start();
     require_once(__DIR__."/controllers/producto_control.php");
     $list = Producto_control::mostrar_productos();
-
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +13,9 @@
     <link rel="stylesheet" href="views/css/normalize.css">
     <link rel="stylesheet" href="views/css/skeleton.css">
     <link rel="stylesheet" href="views/css/style.css">
-    <script type="text/javascript" src="views/js/carrito.js"></script>
 </head>
 <body>
-
+    
     <header class="banner">
 		<nav class="menu">
 			<ul class="menu-ul">
@@ -25,9 +23,9 @@
 				<li><a href="#">Nosotros</a></li>
 				<li><a href="#">Contactos</a></li>
 				<?php 
-					if(isset($_SESSION['nomb_usuario'])){
+					if(isset($_SESSION['usuario']['nombre'])){
 				?>
-					<li><a href="login/logout.php">Bienvenido, <?php echo $_SESSION['nomb_usuario']; ?></a></li>
+					<li><a href="login/logout.php">Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?></a></li>
 				<?php				
 					}
 					else{
@@ -39,7 +37,6 @@
 			</ul>
 		</nav>
 	</header>
-
     <div class="hero">
         <div class="container"> 
             <div class="row">  
@@ -93,13 +90,15 @@
                             <h4><?php echo $data['nombre']; ?></h4>
                             <p><?php echo $data['descripcion']; ?></p>
                             <img src="views/img/estrellas.png">
-                            <p class="precio"><?php echo $data['precio']; ?> <span class="u-pull-right"><?php echo $data['precio']; ?></span></p>
+                            <p class="precio">S/. <?php echo $data['precio']; ?> <span class="u-pull-right">S/. <?php echo $data['precio']; ?></span></p>
                             <div class="boton-compra">
                                 <input type="button" onclick="decrementa()" value="-" name="decremento">
                                 <p class="cantidad" name="cantidad" id="cantidad">1</p>
                                 <input type="button" onclick="incrementa()" value="+" name="incremento">
                             </div>
-                            <form action="" class="envio-carrito">
+                            <form  id="envio-carrito" class="envio-carrito">
+                                <input type="hidden" name="id_producto" value="<?php echo $data['id_producto']; ?>" id="id_producto">
+                                <input type="hidden" name="action" value="agregar_carrito" id="action">
                                 <input type="submit" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">
                             </form>
                         </div>
@@ -113,27 +112,14 @@
         </div>
     </div>
 
-    <!-- <a href="loginCliente.php" class="u-full-width button-primary button input agregar-carrito">Comprar</a> -->
-
-    <!-- <footer class="footer"> 
-        <div class="container">
-            <div class="row">
-                <div class="four columns">
-                    <nav class="menu">
-                        <a class="enlace" href="views/login.php">Iniciar Sesión</a>
-                        <a class="enlace" href="RegistrarCliente.php">Registrarse</a>
-                    </nav>
-                </div>
-                <div class="four columns">
-                    <nav class="menu">
-                        <a class="enlace" href="Pagina_Inicio.php">Inicio</a>
-                        <a class="enlace" href="sistema/ubicacion.php">Ubicacion</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </footer> -->
-
+    <script src="views/js/jquery-3.5.1.js"></script>
+    <script src="views/js/carrito.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
+  
     
 </body>
 </html>

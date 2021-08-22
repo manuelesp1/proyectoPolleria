@@ -38,10 +38,10 @@ require_once(__DIR__."/../models/usuario_model.php");
             $_SESSION['usuario'] = $list;
 
             if($_SESSION['usuario']['id_rol'] == '1'){
-                header("location: ./../views/cliente_index.php");
+                header("location: ./../index.php");
             } else {
                 // header("location: ./../index.php");
-                header("location: ./../views/cliente_index.php");
+                header("location: ./../index.php");
             }
             
         }
