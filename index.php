@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="views/css/normalize.css">
     <link rel="stylesheet" href="views/css/skeleton.css">
     <link rel="stylesheet" href="views/css/style.css">
+    <script type="text/javascript" src="views/js/sweetalert2@10.js"></script>
 </head>
 <body>
     
@@ -26,6 +27,9 @@
 					if(isset($_SESSION['usuario']['nombre'])){
 				?>
 					<li><a href="login/logout.php">Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?></a></li>
+                    <li><a href="views/carrito.php"><img src="views/img/cart.png" alt=""></a></li>
+                    <li><a href="views/logout.php">Cerrar sesion</a></li>
+                   
 				<?php				
 					}
 					else{
@@ -34,6 +38,7 @@
 				 <?php 
 				 	}
 				  ?>
+                  
 			</ul>
 		</nav>
 	</header>
@@ -91,15 +96,17 @@
                             <p><?php echo $data['descripcion']; ?></p>
                             <img src="views/img/estrellas.png">
                             <p class="precio">S/. <?php echo $data['precio']; ?> <span class="u-pull-right">S/. <?php echo $data['precio']; ?></span></p>
-                            <div class="boton-compra">
+
+                            <!-- <div class="boton-compra">
                                 <input type="button" onclick="decrementa()" value="-" name="decremento">
-                                <p class="cantidad" name="cantidad" id="cantidad">1</p>
+                                <input type="number" name="cantidad" id="cantidad<?php echo $i ?>" value="1">
                                 <input type="button" onclick="incrementa()" value="+" name="incremento">
-                            </div>
-                            <form  id="envio-carrito" class="envio-carrito">
-                                <input type="hidden" name="id_producto" value="<?php echo $data['id_producto']; ?>" id="id_producto">
-                                <input type="hidden" name="action" value="agregar_carrito" id="action">
-                                <input type="submit" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">
+                            </div> -->
+
+                            <form  class="envio-carrito" name="envio-carrito<?php echo $i ?>" method="post" action="">
+                                <input type="hidden" name="id_producto" value="<?php echo $data['id_producto']; ?>" id="id_producto<?php echo $i ?>">
+                                <input type="hidden" name="action" value="agregar_carrito" id="action<?php echo $i ?>">
+                                <button type="button" id="envio-carrito<?php echo $i ?>" onclick="agregar_carrito(this.id)" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">Enviar al carrito</button>
                             </form>
                         </div>
 

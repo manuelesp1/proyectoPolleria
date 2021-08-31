@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once(__DIR__."/../models/usuario_model.php");
 
     class Usuario_control{
@@ -19,6 +19,12 @@ require_once(__DIR__."/../models/usuario_model.php");
             $data = new Usuario_model();
             $list = $data->verificar_usuario($correo, $clave);
             return $list;
+        }
+
+        public function nuevo_usuario_aux(){
+            $data = new Usuario_model();
+            $data->nuevo_usuario_aux();
+            
         }
 
     }    

@@ -24,6 +24,11 @@ class Usuario_modelo{
         }
         return $list;
     }
+
+    public function nuevo_usuario_aux(){
+        $this->db->query("INSERT into usuario (id_rol) values ('1')");
+        $this->db->query("INSERT into cliente (nombre) values ('cliente')");
+    }
 }
 
 ?>

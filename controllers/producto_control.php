@@ -4,7 +4,7 @@
 
     class Producto_control{
         
-        public function mostrar_productos(){
+        public static function mostrar_productos(){
             $data = new Producto_modelo();
             $list = $data->mostrar_productos();
             return $list;
