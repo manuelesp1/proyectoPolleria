@@ -1,4 +1,6 @@
 <?php
+
+
 class Usuario_modelo{
     private $db;
 
@@ -16,8 +18,18 @@ class Usuario_modelo{
         return $list;
     }
 
+    public static function mostrar_usuario($id_usuario){
+        $query = $this->db->query("SELECT * FROM usuarios where id_usuario = '$id_usuario'");
+        $list = null;
+        while($data = mysqli_fetch_assoc($query)){
+            $list[] = $data;
+        }
+        return $list;
+    }
+
     public function verificar_usuario($correo, $clave){
-        $query = $this->db->query("SELECT t1.id_usuario, t2.id_rol, t1.id_cliente, t1.nombre, t1.dni, t1.telefono, t1.direccion from cliente t1 inner join usuario t2 where t2.correo = '$correo' and t2.clave = '$clave'");
+        //$query = $this->db->query("SELECT t1.id_usuario, t3.rol, t1.id_cliente, t1.nombre, t1.dni, t1.telefono, t1.direccion from cliente t1 inner join usuario t2 inner join rol t3 where t2.correo = '$correo' and t2.clave = '$clave'");
+        $query = $this->db->query("SELECT t1.id_usuario, t3.rol, t1.id_cliente, t1.nombre, t1.dni, t1.telefono, t1.direccion from cliente t1 inner join usuario t2 on t1.id_usuario = t2.id_usuario inner join rol t3 on t2.id_rol = t3.id_rol where t2.correo = '$correo' and t2.clave = '$clave'");
         $list = null;
         while($data = mysqli_fetch_assoc($query)){
             $list = $data;
@@ -25,10 +37,7 @@ class Usuario_modelo{
         return $list;
     }
 
-    public function nuevo_usuario_aux(){
-        $this->db->query("INSERT into usuario (id_rol) values ('1')");
-        $this->db->query("INSERT into cliente (nombre) values ('cliente')");
-    }
+   
 }
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-class PedidoProducto_model{
+class PedidoProducto_modelo{
     private $db;
 
     public function __construct(){

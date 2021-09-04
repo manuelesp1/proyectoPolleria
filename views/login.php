@@ -12,7 +12,6 @@ if(empty($_SESSION['usuario'])){
     echo strtolower($_SESSION['usuario']['nombre']);
   }
 }
-
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-class Pedido_model{
+class Pedido_modelo{
     private $db;
 
     public function __construct(){
@@ -21,7 +21,7 @@ class Pedido_model{
     }
 
     public function mostrar_pedido($id_cliente){
-        $query = $this->db->query("SELECT t1.nombre, t1.precio, t2.cantidad from producto t1 inner join pedido_producto t2 on t1.id_producto = t2.id_producto inner join pedido t3 on t2.id_pedido = t3.id_pedido where t3.id_cliente = $id_cliente and t3.estado = '1'");
+        $query = $this->db->query("SELECT t1.nombre, t1.precio, t2.cantidad from producto t1 inner join pedido_producto t2 on t1.id_producto = t2.id_producto inner join pedido t3 on t2.id_pedido = t3.id_pedido where t3.id_cliente = '$id_cliente' and t3.estado = '1'");
         $list = null;
         while($data = mysqli_fetch_assoc($query)){
             $list[] = $data;

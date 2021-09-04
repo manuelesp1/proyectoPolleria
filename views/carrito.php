@@ -48,5 +48,14 @@
     </tbody>
    
     </table>
+    <section>
+        <form action="../controllers/pedido_control.php">
+            <input type="hidden" name="total" value="<?php echo $total ?>">
+            <input type="hidden" name="action" value="pagar_pedido">
+            <input type="button" value="pagar" >
+
+        </form>
+        
+    </section>
 </body>
 </html>

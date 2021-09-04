@@ -118,6 +118,7 @@
             ?>
         </div>
     </div>
+    <?php require_once("views/includes/footer.html"); ?>
 
     <script src="views/js/jquery-3.5.1.js"></script>
     <script src="views/js/carrito.js"></script>
