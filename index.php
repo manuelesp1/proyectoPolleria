@@ -25,8 +25,9 @@
 				<li><a href="#">Contactos</a></li>
 				<?php 
 					if(isset($_SESSION['usuario']['nombre'])){
+                        
 				?>
-					<li><a href="login/logout.php">Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?></a></li>
+					<li><a href="views/logout.php">Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?></a></li>
                     <li><a href="views/carrito.php"><img src="views/img/cart.png" alt=""></a></li>
                     <li><a href="views/logout.php">Cerrar sesion</a></li>
                    
@@ -35,7 +36,7 @@
 					else{
 				 ?>
 				 	<li><a href="views/login.php">Login</a></li>
-				 <?php 
+                <?php
 				 	}
 				  ?>
                   
@@ -97,16 +98,22 @@
                             <img src="views/img/estrellas.png">
                             <p class="precio">S/. <?php echo $data['precio']; ?> <span class="u-pull-right">S/. <?php echo $data['precio']; ?></span></p>
 
-                            <!-- <div class="boton-compra">
-                                <input type="button" onclick="decrementa()" value="-" name="decremento">
-                                <input type="number" name="cantidad" id="cantidad<?php echo $i ?>" value="1">
-                                <input type="button" onclick="incrementa()" value="+" name="incremento">
-                            </div> -->
 
                             <form  class="envio-carrito" name="envio-carrito<?php echo $i ?>" method="post" action="">
-                                <input type="hidden" name="id_producto" value="<?php echo $data['id_producto']; ?>" id="id_producto<?php echo $i ?>">
+                                <input type="hidden" name="id_producto" value="<?php echo $data['id_producto']; ?>" id="id_producto<?php echo $i ?>">  
                                 <input type="hidden" name="action" value="agregar_carrito" id="action<?php echo $i ?>">
-                                <button type="button" id="envio-carrito<?php echo $i ?>" onclick="agregar_carrito(this.id)" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">Enviar al carrito</button>
+                                <?php
+                                    if(isset($_SESSION['usuario'])){
+                                ?>
+                                    <button type="button" id="envio-carrito<?php echo $i ?>" onclick="agregar_carrito(this.id)" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">Enviar al carrito</button>
+                                <?php
+                                    }else{
+                                ?>
+                                    <button type="button" id="no-session<?php echo $i ?>" onclick="no_session()" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">Enviar al carrito</button>
+                                <?php
+                                    }
+                                ?>
+                                
                             </form>
                         </div>
 

@@ -28,6 +28,11 @@ class Pedido_modelo{
         }
         return $list;
     }
+
+    public function pagar_pedido($total, $id_cliente){
+        $query = $this->db->query("UPDATE pedido set precio_total = '$total', estado = '0', fecha = now() where id_cliente = '$id_cliente' and id_pedido = (select max(id_pedido) from pedido where id_cliente = '$id_cliente')");
+    }
+    
 }
 
 

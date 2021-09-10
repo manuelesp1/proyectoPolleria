@@ -18,8 +18,13 @@
 <body>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<div class="container">
+    <meta name="viewport"  class="container">
     <h1>Carrito de Compra</h1>
+
+    <?php
+        if($list != null){
+    ?>
+
     <table class="table">
     <thead>
         <tr>
@@ -32,6 +37,7 @@
     </thead>
     <tbody>
         <?php
+            $total = 0;
             foreach($list as $data):
         ?>
         <tr>
@@ -42,6 +48,7 @@
             </td>
         </tr>
         <?php 
+            $total = $total + $data['precio']; //falta multiplicar cantidades
             endforeach;
         ?>
         
@@ -49,13 +56,21 @@
    
     </table>
     <section>
-        <form action="../controllers/pedido_control.php">
+        <form method="post" action="../controllers/pedido_control.php">
             <input type="hidden" name="total" value="<?php echo $total ?>">
+            <input type="hidden" name="id_cliente" value="<?php echo $id_cliente ?>">
             <input type="hidden" name="action" value="pagar_pedido">
-            <input type="button" value="pagar" >
+            <input type="submit" name="submit" value="pagar" >
 
         </form>
         
     </section>
+    <?php
+        }else{
+    ?>
+        <h4>No hay productos en el carrito</h4>
+    <?php
+        }
+    ?>
 </body>
 </html>

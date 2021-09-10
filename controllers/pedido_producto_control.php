@@ -21,11 +21,19 @@ if(isset($_POST['action'])){ //provisional: action>submit
                 if($_SESSION['pedido']['estado'] == '1'){//corregir array para llamar con get y set
                     
                     //aqui consultar si el producto ya ha sido escogido
+                    // $duplicado = new PedidoProducto_modelo();
+                    // $list = $duplicado->producto_duplicado($id_producto, $id_cliente);
+                    // $_SESSION['duplicado'] = $list;
+                    // if(!is_null($_SESSION['duplicado']['estado'])){
+                    //     $_SESSION['duplicado'] = $duplicado;
+                    // }else{
+                    //     $_SESSION['duplicado'] = $duplicado;
+                    // }
+                   
                     
                     $agregar_producto = new PedidoProducto_modelo();
                     $agregar_producto->agregar_producto($id_producto, $id_cliente);
-                    // $_SESSION['producto'][$id_producto] = 'agregado';
-                    
+           
     
                 }
                 else{
@@ -38,7 +46,7 @@ if(isset($_POST['action'])){ //provisional: action>submit
         }
     }
     else{
-        header("location: ./views/login.php");
+        header("location: ./../views/login.php");
     }
     
 
