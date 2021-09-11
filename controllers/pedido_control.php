@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once(__DIR__."/../models/pedido_model.php");
 
 
@@ -24,5 +24,6 @@ require_once(__DIR__."/../models/pedido_model.php");
             echo $total;
             header("location: ./../index.php");
         }
+        
     }
 ?>

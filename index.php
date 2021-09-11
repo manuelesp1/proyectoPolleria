@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="views/css/skeleton.css">
     <link rel="stylesheet" href="views/css/style.css">
     <script type="text/javascript" src="views/js/sweetalert2@10.js"></script>
+   
 </head>
 <body>
     
@@ -23,23 +24,26 @@
                 <li><img src="views/img/logo.png" alt="" width="80px"></li>
 				<li><a href="#">Nosotros</a></li>
 				<li><a href="#">Contactos</a></li>
-				<?php 
-					if(isset($_SESSION['usuario']['nombre'])){
-                        
-				?>
+                <?php if(isset($_SESSION['estado_carrito'])){ 
+                        if($_SESSION['estado_carrito'] == 'abierto'){ ?>
+
+                            <li><a href="views/carrito.php"><img src="views/img/cart.png" alt=""></a></li>
+
+                <?php } 
+                        } ?>
+				
+                <?php if(isset($_SESSION['usuario']['nombre'])){ ?>
+
 					<li><a href="views/logout.php">Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?></a></li>
-                    <li><a href="views/carrito.php"><img src="views/img/cart.png" alt=""></a></li>
+                    
                     <li><a href="views/logout.php">Cerrar sesion</a></li>
                    
-				<?php				
-					}
-					else{
-				 ?>
+				<?php }else{ ?>
+
 				 	<li><a href="views/login.php">Login</a></li>
-                <?php
-				 	}
-				  ?>
-                  
+
+                <?php } ?>
+    
 			</ul>
 		</nav>
 	</header>
@@ -102,19 +106,9 @@
                             <form  class="envio-carrito" name="envio-carrito<?php echo $i ?>" method="post" action="">
                                 <input type="hidden" name="id_producto" value="<?php echo $data['id_producto']; ?>" id="id_producto<?php echo $i ?>">  
                                 <input type="hidden" name="action" value="agregar_carrito" id="action<?php echo $i ?>">
-                                <?php
-                                    if(isset($_SESSION['usuario'])){
-                                ?>
-                                    <button type="button" id="envio-carrito<?php echo $i ?>" onclick="agregar_carrito(this.id)" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">Enviar al carrito</button>
-                                <?php
-                                    }else{
-                                ?>
-                                    <button type="button" id="no-session<?php echo $i ?>" onclick="no_session()" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">Enviar al carrito</button>
-                                <?php
-                                    }
-                                ?>
-                                
+                                <button type="button" id="envio-carrito<?php echo $i ?>" onclick="agregar_carrito(this.id)" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">Enviar al carrito</button>
                             </form>
+                            
                         </div>
 
                     </div>
@@ -125,6 +119,8 @@
             ?>
         </div>
     </div>
+   
+
     <?php require_once("views/includes/footer.html"); ?>
 
     <script src="views/js/jquery-3.5.1.js"></script>

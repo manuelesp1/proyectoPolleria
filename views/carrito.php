@@ -1,9 +1,18 @@
+
+
+
 <?php
     session_start();
-    $id_cliente = $_SESSION['usuario']['id_cliente'];
+    require_once(__DIR__."/../controllers/producto_control.php");
 
-    require_once(__DIR__."/../controllers/pedido_control.php");
-    $list = Pedido_control::mostrar_pedido($id_cliente);
+    if(isset($_SESSION['productos_carrito'])){
+        
+        $lista_productos = $_SESSION['productos_carrito'];
+       
+    }else{
+       
+    }
+    
 
 ?>
 
@@ -22,15 +31,16 @@
     <h1>Carrito de Compra</h1>
 
     <?php
-        if($list != null){
+        if($lista_productos != null){
     ?>
 
     <table class="table">
     <thead>
         <tr>
+            <th>Cantidad</th>
             <th>Producto</th>
             <th>Precio</th>
-            <!-- <th>Cantidad</th> -->
+            
             <th>Subtotal</th>
             <th> </th>
         </tr>
@@ -38,19 +48,29 @@
     <tbody>
         <?php
             $total = 0;
-            foreach($list as $data):
+            foreach($_SESSION['productos_carrito'] as $key => $data):
+                $id_producto = $data['id_producto'];
+                $datos_producto = Producto_control::mostrar_producto($id_producto);
+                foreach($datos_producto as $data_prod):
+                 
+                    $subtotal = $data_prod['precio'] * $data['cantidad'];
         ?>
         <tr>
-            <td><?php echo $data['nombre']; ?></td>
-            <td><?php echo 'S/'.$data['precio']; ?></td>
-            <td>
-                <a href="cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="glyphicon glyphicon-trash"></i></a>
-            </td>
+            <td><?php echo $data['cantidad']; ?></td>  
+            <td><?php echo $data_prod['nombre']; ?></td>
+            <td><?php echo $data_prod['precio']; ?></td>
+            <td><?php echo $subtotal ?></td>
+                
         </tr>
         <?php 
-            $total = $total + $data['precio']; //falta multiplicar cantidades
+            $total = $total + $data_prod['precio']; //falta multiplicar cantidades
             endforeach;
+        endforeach;
         ?>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td><?php echo $total ?></td>
         
     </tbody>
    
@@ -72,5 +92,6 @@
     <?php
         }
     ?>
+
 </body>
 </html>

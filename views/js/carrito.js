@@ -1,13 +1,13 @@
-function no_session(){
-  'use strict';
-  Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'No ha iniciado sesión',
-    timer: 1500,
-    showConfirmButton: false,
-  })
-}
+// function no_session(){
+//   'use strict';
+//   Swal.fire({
+//     icon: 'error',
+//     title: 'Oops...',
+//     text: 'No ha iniciado sesión',
+//     timer: 1500,
+//     showConfirmButton: false,
+//   })
+// }
 
 
 function agregar_carrito(id){

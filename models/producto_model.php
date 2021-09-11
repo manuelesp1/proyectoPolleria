@@ -23,15 +23,15 @@ class Producto_modelo{
         return $list;
     }
 
-    // public function mostrar_producto($id_producto){
-    //     $query = $this->db->query("select * from producto where 'id_producto' = $id_producto");
-    //     $list = null;
-    //     while($data = mysqli_fetch_assoc($query)){
-    //         $list[] = $data;
-    //     }
-    //     return $list;
+    public function mostrar_producto($id_producto){
+        $query = $this->db->query("select * from producto where id_producto = '$id_producto'");
+        $list = null;
+        while($data = mysqli_fetch_assoc($query)){
+            $list[] = $data;
+        }
+        return $list;
 
-    // }
+    }
 }
 
 

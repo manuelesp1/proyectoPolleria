@@ -1,2 +1,4 @@
 config/conexion.php
 config/conexion.php
+views/carrito_auxiliar.php
+controllers/auxiliar_pedido_producto.php

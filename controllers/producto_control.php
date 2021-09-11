@@ -10,11 +10,11 @@
             return $list;
         }
 
-        // public function mostrar_producto($id_producto){
-        //     $data = new Producto_modelo();
-        //     $list = $data->mostrar_producto($id_producto);
-        //     return $list;
-        // }
+        public function mostrar_producto($id_producto){
+            $data = new Producto_modelo();
+            $list = $data->mostrar_producto($id_producto);
+            return $list;
+        }
     }
 
 
