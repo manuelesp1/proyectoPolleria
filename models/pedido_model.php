@@ -11,6 +11,10 @@ class Pedido_modelo{
         $this->db->query("INSERT INTO pedido (id_cliente, estado) values ('$id_cliente', '1')");
     }
 
+    public function nuevo_pedido_ns(){//falta corregir id_cliente - no sesion
+        $this->db->query("INSERT INTO pedido (id_cliente, estado) values ('$id_cliente', '1')");
+    }
+
     public function estado_pedido($id_cliente){
         $query = $this->db->query("SELECT estado FROM pedido WHERE id_cliente = '$id_cliente' and id_pedido = (SELECT MAX(id_pedido) from pedido where id_cliente = '$id_cliente')");
         $list = null;

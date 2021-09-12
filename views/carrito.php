@@ -63,7 +63,7 @@
                 
         </tr>
         <?php 
-            $total = $total + $data_prod['precio']; //falta multiplicar cantidades
+            $total = $total + $data_prod['precio'];
             endforeach;
         endforeach;
         ?>
@@ -77,21 +77,22 @@
     </table>
     <section>
         <form method="post" action="../controllers/pedido_control.php">
+            <input type="text" name="nombre" id="" placeholder="ingrese su nombre">
+            <input type="text" name="dni" id="" placeholder="ingrese su dni">
+            <input type="text" name="telefono" id="" placeholder="ingrese su telefono">
+            <input type="text" name="direccion" id="" placeholder="ingrese su direccion">
             <input type="hidden" name="total" value="<?php echo $total ?>">
             <input type="hidden" name="id_cliente" value="<?php echo $id_cliente ?>">
             <input type="hidden" name="action" value="pagar_pedido">
-            <input type="submit" name="submit" value="pagar" >
-
-        </form>
-        
+            <input type="submit" name="submit" value="Realizar compra">
+        </form>    
     </section>
-    <?php
-        }else{
-    ?>
+
+    <?php }else{ ?>
         <h4>No hay productos en el carrito</h4>
-    <?php
-        }
-    ?>
+    <?php } ?>
+        
+    
 
 </body>
 </html>

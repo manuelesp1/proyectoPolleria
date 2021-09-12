@@ -38,6 +38,8 @@ class Usuario_modelo{
     }
 
    
+
+   
 }
 
 ?>
