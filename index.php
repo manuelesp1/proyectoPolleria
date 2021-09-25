@@ -78,17 +78,17 @@
                     foreach($list as $data):
                         $i++;
                 ?>
-                <div class="card-group col-sm-12 col-md-6 col-xl-3 mt-4">
+                <div class="card-group col-sm-12 col-md-6 col-xl-4 mt-4">
                     <div class="card">
                         <img src="views/img/<?php echo $data['imagen'].$i.".jpg"; ?>" class="card-img-top img-fluid" alt="">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $data['nombre']; ?></h5>
+                            <h5 class="card-title my-4"><?php echo $data['nombre']; ?></h5>
                             <div class="container card-text d-flex justify-content-between">
                                 <p>S/. <?php echo $data['precio']; ?></p>
                                 <p>S/. <?php echo $data['precio']; ?></p>
                             </div>
                             <p class="text-center">
-                                <input type="button" value="Enviar al carrito" class="btn btn-primary">
+                                <input type="button" value="Enviar al carrito" class="btn btn-primary btn-xl">
                             </p>
                             
                         </div>
