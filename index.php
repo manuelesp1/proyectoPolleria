@@ -20,7 +20,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-black navbar-expand-md">
         <div class="container">
             <a href="#" class="navbar-brand"><img src="views/img/logo.png" class="img-fluid" alt="logo de carbon chicken" width="75px"></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu-principal"><span class="navbar-toggler-icon"></span></button>
@@ -51,27 +51,40 @@
             </div>
         </div> 
     </nav>
-    <section class="imagen">
-        <img src="views/img/pollo1.jpg" class="img-fluid" alt="pollos-carbon-chicken">
+    <section class="imagen-principal">
+        <img src="views/img/drilled-chicken.jpg" class="img-fluid" alt="pollos-carbon-chicken">
         <!-- <p><span>Acompañándote en tu mesa</span> con el mejor pollo a la brasa</p> -->
     </section>
     
-    <section class="container">
-        <div class="row">
-            <div class="col-12 pt-3">
-                    <p>Con todos los protocolos de bioseguridad</p>
+    <section class="container-fluid bg-light">
+        <section class="container">
+            <div class="row">
+                <div class="col-md-4 pt-3 text-center">
+                    <div class="row">
+                        <img src="views/img/mask.svg" class="img-info col-md-4 p-2 mx-auto d-block">
+                        <p class="">Protocolos de bioseguridad</p>       
+                    </div>   
+                </div>
+                <div class="col-md-4 pt-3 text-center">
+                    <div class="row">
+                        <img src="views/img/chicken.svg" class="img-info p-2 mx-auto d-block">
+                        <p class="">Pollos y parrillas</p>      
+                    </div>   
+                </div>
+                <div class="col-md-4 pt-3 text-center">
+                    <div class="row">
+                        <img src="views/img/delivery.svg" class="img-info p-2 mx-auto d-block">
+                        <p class=""> Delivery a todo puente piedra</p>    
+                    </div>   
+                </div>
             </div>
-            <div class="col-12 pt-3">
-                    <p>Pollos, parrillas, platos criollos y bebidas</p>
-            </div>
-            <div class="col-12 pt-3">
-                    <p>Delivery a todo puente piedra</p>
-            </div>
-        </div>
+        </section>
     </section>
-    <section class="carta">
+    
+
+    <section class="carta bg-black">
         <div class="container">
-            <h3 class="text-center">Nuestra Carta</h3>
+            <h3 class="text-center text-white pt-5">Nuestra Carta</h3>
             <div class="row">
                 <?php
                     $i = 0;
@@ -81,8 +94,9 @@
                 <div class="card-group col-sm-12 col-md-6 col-xl-4 mt-4">
                     <div class="card">
                         <img src="views/img/<?php echo $data['imagen'].$i.".jpg"; ?>" class="card-img-top img-fluid" alt="">
-                        <div class="card-body">
+                        <div class="card-body bg-dark text-white">
                             <h5 class="card-title my-4"><?php echo $data['nombre']; ?></h5>
+                            
                             <div class="container card-text d-flex justify-content-between">
                                 <p>S/. <?php echo $data['precio']; ?></p>
                                 <p>S/. <?php echo $data['precio']; ?></p>
