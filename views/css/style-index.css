@@ -1,9 +1,19 @@
 
+html{
+    background-color: #000;
+}
 /*---------------------
 ESTILO DE LOS PRODUCTOS
 ----------------------*/
+.imagen-principal img{
+    width: 100%;
+    object-fit: cover;
+}
 .card img{
     width: 100%;
     height: 300px;
     object-fit: cover;
+}
+.img-info{
+    width: 100px;
 }
