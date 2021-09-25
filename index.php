@@ -12,44 +12,49 @@
     <title>Carbon Chicken</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="views/css/normalize.css">
-    <link rel="stylesheet" href="views/css/skeleton.css">
+    <!-- <link rel="stylesheet" href="views/css/skeleton.css"> -->
     <link rel="stylesheet" href="views/css/style.css">
     <script type="text/javascript" src="views/js/sweetalert2@10.js"></script>
    
 </head>
 <body>
 
-  
-    <h1>rama secundaria</h1>
-    <!-- <header class="container">
-		<nav class="menu">
-			<ul class="menu-ul">
-                <li><img src="views/img/logo.png" alt="" width="80px"></li>
-				<li><a href="#">Nosotros</a></li>
-				<li><a href="#">Contactos</a></li>
-                <?php if(isset($_SESSION['estado_carrito'])){ 
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand"><img src="views/img/logo.png" class="img-fluid" alt="logo de carbon chicken" width="75px"></a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu-principal"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="menu-principal">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="#" class="nav-link">Nosotros</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contactos</a></li>
+                    <?php if(isset($_SESSION['estado_carrito'])){ 
                         if($_SESSION['estado_carrito'] == 'abierto'){ ?>
 
-                            <li><a href="views/carrito.php"><img src="views/img/cart.png" alt=""></a></li>
+                            <li class="nav-item"><a href="views/carrito.php" class="nav-link">Carrito</a></li>
 
                 <?php } 
                         } ?>
 				
                 <?php if(isset($_SESSION['usuario']['nombre'])){ ?>
 
-					<li><a href="views/logout.php">Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?></a></li>
+					<li class="nav-item"><a href="views/logout.php" class="nav-link">Bienvenido, <?php echo $_SESSION['usuario']['nombre']; ?></a></li>
                     
-                    <li><a href="views/logout.php">Cerrar sesion</a></li>
+                    <li class="nav-item"><a href="views/logout.php" class="nav-link">Cerrar sesion</a></li>
                    
 				<?php }else{ ?>
 
-				 	<li><a href="views/login.php">Login</a></li>
+				 	<li class="nav-item"><a href="views/login.php" class="nav-link">Login</a></li>
 
                 <?php } ?>
+                </ul>
+            </div>
+        </div> 
+    </nav>
+    <section class="imagen">
+        <img src="views/img/pollo1.jpg" alt="pollos-carbon-chicken">
+        <p><span>Acompañándote en tu mesa</span> con el mejor pollo a la brasa</p>
+    </section>
     
-			</ul>
-		</nav>
-	</header> -->
     <div class="hero">
         <div class="container"> 
             <div class="row">  
