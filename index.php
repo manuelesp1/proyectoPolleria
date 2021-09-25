@@ -11,9 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carbon Chicken</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="views/css/normalize.css">
+    <!-- <link rel="stylesheet" href="views/css/normalize.css"> -->
     <!-- <link rel="stylesheet" href="views/css/skeleton.css"> -->
-    <link rel="stylesheet" href="views/css/style.css">
+    <!-- <link rel="stylesheet" href="views/css/style.css"> -->
+    <link rel="stylesheet" href="views/css/style-index.css">
     <script type="text/javascript" src="views/js/sweetalert2@10.js"></script>
    
 </head>
@@ -51,85 +52,53 @@
         </div> 
     </nav>
     <section class="imagen">
-        <img src="views/img/pollo1.jpg" alt="pollos-carbon-chicken">
-        <p><span>Acompañándote en tu mesa</span> con el mejor pollo a la brasa</p>
+        <img src="views/img/pollo1.jpg" class="img-fluid" alt="pollos-carbon-chicken">
+        <!-- <p><span>Acompañándote en tu mesa</span> con el mejor pollo a la brasa</p> -->
     </section>
     
-    <div class="hero">
-        <div class="container"> 
-            <div class="row">  
-                <div class="six columns">
-                    <div class="contenido-hero">
-                        <h2>Acompañándote<br />en tu mesa</h2>
-                        <p>CON EL MEJOR POLLO</p>
-                        <!-- <form>
-                            <input class="u-full-width" type="text" placeholder="¿Que te gustaria probar?" id="buscador">
-                            <input type="submit" class="submit-buscador">
-                        </form> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="barra">
-        <div class="container">
-            <div class="row">
-                <div class="four columns icono icono1">
-                    <p>Con todos los protocolos<br>
-                    De Bioseguridad</p>
-                </div>
-                <div class="four columns icono icono2">
-                    <p>Pollos & Parrillas<br>
-                    Platos Criollos & Bebidas</p>
-                </div>
-                <div class="four columns icono icono3">
-                    <p>Delivery<br>
-                    Todo Puente Piedra</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="lista-platillos" class="container">
-        <h1 class="encabezado">Nuestra Carta</h1>
-
+    <section class="container">
         <div class="row">
-            <?php
-                $i = 0;
-                foreach($list as $data):
-                    $i++;
-            ?>
-
-                <div class="four columns">
+            <div class="col-12 pt-3">
+                    <p>Con todos los protocolos de bioseguridad</p>
+            </div>
+            <div class="col-12 pt-3">
+                    <p>Pollos, parrillas, platos criollos y bebidas</p>
+            </div>
+            <div class="col-12 pt-3">
+                    <p>Delivery a todo puente piedra</p>
+            </div>
+        </div>
+    </section>
+    <section class="carta">
+        <div class="container">
+            <h3 class="text-center">Nuestra Carta</h3>
+            <div class="row">
+                <?php
+                    $i = 0;
+                    foreach($list as $data):
+                        $i++;
+                ?>
+                <div class="card-group col-sm-12 col-md-6 col-xl-3 mt-4">
                     <div class="card">
-                        <img src="views/img/<?php echo $data['imagen'].$i.".jpg"; ?>" class="imagen-platillo u-full-width">
-                        <div class="info-card">
-                            <h4><?php echo $data['nombre']; ?></h4>
-                            <p><?php echo $data['descripcion']; ?></p>
-                            <img src="views/img/estrellas.png">
-                            <p class="precio">S/. <?php echo $data['precio']; ?> <span class="u-pull-right">S/. <?php echo $data['precio']; ?></span></p>
-
-
-                            <form  class="envio-carrito" name="envio-carrito<?php echo $i ?>" method="post" action="">
-                                <input type="hidden" name="id_producto" value="<?php echo $data['id_producto']; ?>" id="id_producto<?php echo $i ?>">  
-                                <input type="hidden" name="action" value="agregar_carrito" id="action<?php echo $i ?>">
-                                <button type="button" id="envio-carrito<?php echo $i ?>" onclick="agregar_carrito(this.id)" value="Enviar al carrito" class="u-full-width button-primary button input agregar-carrito">Enviar al carrito</button>
-                            </form>
+                        <img src="views/img/<?php echo $data['imagen'].$i.".jpg"; ?>" class="card-img-top img-fluid" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $data['nombre']; ?></h5>
+                            <div class="container card-text d-flex justify-content-between">
+                                <p>S/. <?php echo $data['precio']; ?></p>
+                                <p>S/. <?php echo $data['precio']; ?></p>
+                            </div>
+                            <p class="text-center">
+                                <input type="button" value="Enviar al carrito" class="btn btn-primary">
+                            </p>
                             
                         </div>
-
-                    </div>
-
+                    </div>  
                 </div>
-            <?php
-                endforeach;
-            ?>
+                <?php endforeach; ?>  
+            </div>
         </div>
-    </div>
-   
-
-    <?php require_once("views/includes/footer.html"); ?>
+        
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="views/js/carrito.js"></script>
